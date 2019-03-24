@@ -38,7 +38,6 @@ int main()
                 ll a1 = arr[0] + i;
                 ll a2 = arr[1] + j;
                 ll custo = abs(i) + abs(j);
-                //printf("i = %d j = %d, custo = %d\n", i, j, custo);
                 ans = min(ans, custo  + solve(a2, 2, a2-a1));
             }
         }
