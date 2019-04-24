@@ -2,33 +2,14 @@
 
 using namespace std;
 
-int main(){
-    int t;
-    cin >> t;
-    while(t--){
-        string a;
-        cin >> a;
-        stack<char> st;
-        bool isValid = true;
-        map<char, char> inv;
-        inv['('] = ')';
-        inv['{'] = '}';
-        inv['['] = ']';
-
-        for(char c: a){
-            if(c == '(' or c == '{' or c == '[')
-                st.push(c);
-            else{
-                if(st.empty() or inv[st.top()] != c){
-                    isValid = false;
-                    break;
-                }else st.pop();
-
-            }
-        }
-        if(!st.empty()) isValid = false;
-
-        cout << (isValid ? 'S':'N') << endl;
-    }
+int f(int n){
+    if(n == 1) return 0;
+    return 1 + (n % 2 == 0? f(n/2): f(3*n+1));
+}
+int main()
+{
+    int n;
+    cin >> n;
+    cout << f(n) << endl;
     return 0;
 }
