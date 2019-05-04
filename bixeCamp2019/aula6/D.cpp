@@ -1,20 +1,17 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+
 const int MAXN = 110;
-int pai[MAXN], seen[MAXN];
+int seen[MAXN];
+
 vector<int> adj[MAXN];
-bool cicle = false;
 
 void dfs(int v){
     seen[v] = 1;
     for(auto u: adj[v]){
-        if(u == pai[v]) continue;
-        if(!seen[u]){
-            pai[u] = v;
+        if(!seen[u])
             dfs(u);
-        }else
-            cicle = true;
     }
 }
 
@@ -23,20 +20,19 @@ void dfs(int v){
 int main(){
     int n, m;
     cin >> n >> m;
-    while(m--){
+    for(int i = 0; i < m; i++){
         int a, b;
         cin >> a >> b;
         adj[a].push_back(b);
         adj[b].push_back(a);
     }
-    for(int i = 1; i <= n; i++){
-        if(!seen[i]){
-            pai[i] = i;
-            dfs(i);
-        }
-    }
-    if(cicle)
-        cout << "FHTAGN!\n";
+    dfs(1);
+    bool ans = (n == m);
+    for(int i = 1; i <= n && ans; i++)
+        if(!seen[i]) ans = false;
+
+
+    if(ans && n == m) cout << "FHTAGN!\n";
     else cout << "NO\n";
 
     return 0;
