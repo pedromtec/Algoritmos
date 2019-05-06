@@ -5,7 +5,6 @@ using namespace std;
 char maze[MAXN][MAXN];
 int seen[MAXN][MAXN];
 
-
 int n, m, k;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
@@ -16,14 +15,11 @@ bool fora(int i, int j){
     return i < 0 or i >= n or j < 0 or j >= m;
 }
 
+
 void dfs(int i, int j){
-
-
     if(empts_cells - cont == k) return;
-
     seen[i][j] = 1;
     ++cont;
-
     for(int w = 0; w < 4; w++){
         int di = i + dx[w];
         int dj = j + dy[w];
