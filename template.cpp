@@ -4,10 +4,10 @@
 #define pb push_back
 #define lsb(x) ((x) & (-x))
 
+using namespace std;
+
 typedef long long ll;
 typedef pair<int, int> pii;
-
-using namespace std;
 
 int main()
 {
